@@ -27,14 +27,10 @@ jobs:
       - name: Run Gulp tasks (Minify & Test)
         run: npx gulp
 
-      - name: Commit files
+      - name: Commit and push files
+        if: github.event_name == 'push'
         run: |
-          git config --local user.name "${{ github.actor }}"
-          git config --local user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
-          git add -A
-          git commit -m "Update gulp output files"
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          # force: true
+          git config --local user.name "${{ env.CI_COMMIT_AUTHOR }}"
+          git config --local user.email "username@users.noreply.github.com"
+          git commit -a -m "${{ env.CI_COMMIT_MESSAGE }}"
+          git push
