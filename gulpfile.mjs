@@ -34,6 +34,8 @@ const path = {
     }
 }
 
+console.log('Hello?');
+
 function del(fPath) {
     return  deleteAsync(fPath, {force: true});
 }
