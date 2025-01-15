@@ -1,1 +1,1 @@
-This particular paragraph is from Markdown file, actually.
+This particular paragraph is from Markdown file.
