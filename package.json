@@ -16,7 +16,7 @@
         "url": "https://github.com/liledix4/actions/issues"
     },
     "homepage": "https://github.com/liledix4/actions#readme",
-    "dependencies": {
+    "devDependencies": {
         "del": "^7.1.0",
         "gulp": "^5.0.0",
         "gulp-file-include": "^2.3.0",
