@@ -34,18 +34,18 @@ const path = {
     }
 }
 
-// function del(fPath) {
-//     return  deleteAsync(fPath, {force: true});
-// }
-// function cleanBuild() {
-//     return  del(path.build.main);
-// }
-// function cleanTemp() {
-//     return  del(path.temp.main);
-// }
-// function cleanTemp_Markdown() {
-//     return  del(path.temp.markdown);
-// }
+function del(fPath) {
+    return  deleteAsync(fPath, {force: true});
+}
+function cleanBuild() {
+    return  del(path.build.main);
+}
+function cleanTemp() {
+    return  del(path.temp.main);
+}
+function cleanTemp_Markdown() {
+    return  del(path.temp.markdown);
+}
 
 function MarkdownParseToHTML() {
     return  src(path.src.markdown + '**/*.md', { encoding: false })
@@ -85,14 +85,10 @@ function addOffline() {
                 .pipe(dest(path.build.offline));
 }
 
-// task('clean', parallel(cleanBuild, cleanTemp));
+task('clean', parallel(cleanBuild, cleanTemp));
 task('default', series(
-    series(MarkdownParseToHTML, MarkdownIncludeToHTML, JSONTemp),
-    parallel(includeHTML, addGears, addStatic, addOffline)
+    cleanBuild,
+    series(MarkdownParseToHTML, MarkdownIncludeToHTML, cleanTemp_Markdown, JSONTemp),
+    parallel(includeHTML, addGears, addStatic, addOffline),
+    cleanTemp
 ));
-// task('default', series(
-//     cleanBuild,
-//     series(MarkdownParseToHTML, MarkdownIncludeToHTML, cleanTemp_Markdown, JSONTemp),
-//     parallel(includeHTML, addGears, addStatic, addOffline),
-//     cleanTemp
-// ));
