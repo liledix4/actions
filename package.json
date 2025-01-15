@@ -1,0 +1,29 @@
+{
+    "name": "actions_test",
+    "version": "0.0.0",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "gulp": "gulp"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@github.com/liledix4/actions.git"
+    },
+    "author": "liledix4",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/liledix4/actions/issues"
+    },
+    "homepage": "https://github.com/liledix4/actions#readme",
+    "devDependencies": {
+        "del": "^7.1.0",
+        "gulp": "^5.0.0",
+        "gulp-file-include": "^2.3.0",
+        "gulp-gh-pages": "^0.5.4",
+        "gulp-markdown": "^8.0.0",
+        "gulp-sass": "^5.1.0",
+        "sass": "^1.77.8",
+        "through2": "^4.0.2"
+    }
+}
