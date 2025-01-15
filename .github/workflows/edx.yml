@@ -26,3 +26,14 @@ jobs:
 
       - name: Run Gulp tasks (Minify & Test)
         run: npx gulp
+
+      - name: Commit files
+        run: |
+          git config --local user.name  ${{ github.actor }}
+          git add -A
+          git commit -m "Update gulp output files"
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.REPO_GITHUB_TOKEN }}
+          # force: true
