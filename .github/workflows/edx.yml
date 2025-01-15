@@ -29,7 +29,7 @@ jobs:
 
       - name: Commit and push files
         run: |
-          git config user.name 'github-actions[bot]'
-          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git config user.name 'liledix4[bot]'
+          git config user.email '${{ github.actor_id }}+liledix4[bot]@users.noreply.github.com'
           git commit -a -m "🤖 Updated output files"
           git push
