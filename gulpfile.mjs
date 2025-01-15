@@ -1,6 +1,6 @@
 import gulp from 'gulp';
 const { dest, src, parallel, series, task } = gulp;
-// import { deleteAsync } from 'del';
+import { deleteAsync } from 'del';
 import markdown from 'gulp-markdown';
 import fileinclude from 'gulp-file-include';
 
