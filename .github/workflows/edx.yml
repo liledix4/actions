@@ -29,11 +29,11 @@ jobs:
 
       - name: Commit files
         run: |
-          git config --global user.name "${{ github.actor }}"
+          git config --local user.name "${{ github.actor }}"
           git add -A
           git commit -m "Update gulp output files"
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GULP }}
           # force: true
