@@ -1,6 +1,6 @@
 import gulp from 'gulp';
 const { dest, src, parallel, series, task } = gulp;
-import { deleteAsync } from 'del';
+// import { deleteAsync } from 'del';
 import markdown from 'gulp-markdown';
 import fileinclude from 'gulp-file-include';
 
@@ -34,20 +34,18 @@ const path = {
     }
 }
 
-console.log('Hello?');
-
-function del(fPath) {
-    return  deleteAsync(fPath, {force: true});
-}
-function cleanBuild() {
-    return  del(path.build.main);
-}
-function cleanTemp() {
-    return  del(path.temp.main);
-}
-function cleanTemp_Markdown() {
-    return  del(path.temp.markdown);
-}
+// function del(fPath) {
+//     return  deleteAsync(fPath, {force: true});
+// }
+// function cleanBuild() {
+//     return  del(path.build.main);
+// }
+// function cleanTemp() {
+//     return  del(path.temp.main);
+// }
+// function cleanTemp_Markdown() {
+//     return  del(path.temp.markdown);
+// }
 
 function MarkdownParseToHTML() {
     return  src(path.src.markdown + '**/*.md', { encoding: false })
@@ -87,10 +85,14 @@ function addOffline() {
                 .pipe(dest(path.build.offline));
 }
 
-task('clean', parallel(cleanBuild, cleanTemp));
+// task('clean', parallel(cleanBuild, cleanTemp));
 task('default', series(
-    cleanBuild,
-    series(MarkdownParseToHTML, MarkdownIncludeToHTML, cleanTemp_Markdown, JSONTemp),
-    parallel(includeHTML, addGears, addStatic, addOffline),
-    cleanTemp
+    series(MarkdownParseToHTML, MarkdownIncludeToHTML, JSONTemp),
+    parallel(includeHTML, addGears, addStatic, addOffline)
 ));
+// task('default', series(
+//     cleanBuild,
+//     series(MarkdownParseToHTML, MarkdownIncludeToHTML, cleanTemp_Markdown, JSONTemp),
+//     parallel(includeHTML, addGears, addStatic, addOffline),
+//     cleanTemp
+// ));
